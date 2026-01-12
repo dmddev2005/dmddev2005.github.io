@@ -4,27 +4,21 @@
 
 /* ---------- Design Tokens ---------- */
 :root{
-  --bg: #070A10;
+  /* BECC-Tokyo Brand */
+  --bg: #0A1E3F;          /* deep navy */
+  --bg2: #07162F;         /* darker navy */
+
+  --text: #F2F4F7;        /* off-white */
+  --muted: rgba(242,244,247,.75);
+  --faint: rgba(242,244,247,.55);
+
   --panel: rgba(255,255,255,.06);
-  --panel-strong: rgba(255,255,255,.09);
-  --border: rgba(255,255,255,.12);
+  --panel-strong: rgba(255,255,255,.10);
+  --border: rgba(255,255,255,.14);
 
-  --text: rgba(255,255,255,.95);
-  --muted: rgba(255,255,255,.75);
-  --faint: rgba(255,255,255,.55);
-
-  --accent: 102 150 255;
-  --accent2: 156 90 255;
-
-  --radius-lg: 22px;
-  --radius-md: 14px;
-  --radius-sm: 10px;
-
-  --shadow-soft: 0 10px 30px rgba(0,0,0,.35);
-  --shadow-strong: 0 20px 60px rgba(0,0,0,.45);
-
-  --max-width: 1120px;
-  --pad: clamp(16px, 3vw, 28px);
+  /* Red energy lines */
+  --accent: 200 32 47;    /* crimson red */
+  --accent2: 255 92 92;   /* brighter red highlight */
 }
 
 /* ---------- Base Reset ---------- */
@@ -43,13 +37,14 @@ html, body {
                Roboto, Helvetica, Arial, sans-serif;
 }
 
-body {
+body{
   min-height: 100vh;
   overflow-x: hidden;
   background:
-    radial-gradient(1200px 700px at 20% -10%, rgba(var(--accent), .25), transparent 55%),
-    radial-gradient(1000px 600px at 90% 10%, rgba(var(--accent2), .18), transparent 60%),
-    var(--bg);
+    radial-gradient(900px 500px at 15% -10%, rgba(var(--accent), .28), transparent 60%),
+    radial-gradient(900px 500px at 95% 0%, rgba(var(--accent2), .18), transparent 55%),
+    radial-gradient(1200px 700px at 60% 120%, rgba(47,78,122,.25), transparent 60%),
+    linear-gradient(180deg, var(--bg), var(--bg2));
 }
 
 /* ---------- Typography ---------- */
