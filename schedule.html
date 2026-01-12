@@ -1,1 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BECC-Tokyo | Schedule</title>
+  <link rel="stylesheet" href="./assets/styles.css" />
+</head>
+
+<body class="noise">
+  <div class="nav">
+    <div class="row">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <div style="font-size:14px; opacity:.9;">BECC-Tokyo</div>
+          <div style="font-size:12px; color: rgba(255,255,255,.65);">Cricket Club • Tokyo</div>
+        </div>
+      </div>
+
+      <div class="links">
+        <a href="./index.html" data-i18n="nav_updates">Updates</a>
+        <a href="./schedule.html" data-i18n="nav_schedule">Schedule</a>
+        <a href="./rules.html" data-i18n="nav_rules">Rules</a>
+        <a href="./signup.html" class="btn primary" data-i18n="nav_signup">Join / Signup</a>
+        <button id="langToggle" class="btn" type="button">日本語</button>
+      </div>
+    </div>
+  </div>
+
+  <main class="section">
+    <div class="wrap">
+      <div class="panel pad-lg reveal">
+        <h1 data-i18n="schedule_title">Schedule</h1>
+        <p class="lead" data-i18n="schedule_sub">Upcoming matches and training. You can use the table or Google Calendar (or both).</p>
+
+        <div class="card">
+          <h3>Google Calendar</h3>
+          <p>Replace the iframe URL with your calendar embed link.</p>
+        </div>
+
+        <!-- Replace src with your Google Calendar embed link -->
+        <iframe
+          class="embed"
+          title="BECC-Tokyo Calendar"
+          src="PASTE_YOUR_GOOGLE_CALENDAR_EMBED_URL_HERE"
+          style="height: 720px;"
+          loading="lazy">
+        </iframe>
+
+        <p style="margin-top:14px; color: var(--muted); font-size: 13px;">
+          Tip: Set your calendar to public (details below) so non-members can view it.
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <small>© <span id="year"></span> <span data-i18n="footer_note">Built on GitHub Pages • BECC-Tokyo</span></small>
+    </div>
+  </footer>
+
+  <script src="./assets/site.js"></script>
+</body>
+</html>
 
