@@ -10,6 +10,7 @@
 </head>
 
 <body class="noise">
+  <!-- NAV -->
   <div class="nav">
     <div class="row">
       <div class="brand">
@@ -30,90 +31,110 @@
     </div>
   </div>
 
- <header class="section">
-  <div class="wrap">
-   <div class="hero-banner reveal" style="--hero-image: url('/images/hero.jpg');">
-      <div class="hero-content">
-        <h1 data-i18n="home_title">BECC-Tokyo Cricket Club</h1>
-        <p class="lead" data-i18n="home_sub">
-          A modern club hub for schedule, training, fields, rules, photos, and events — designed for everyone (no Facebook required).
-        </p>
+  <!-- HERO BANNER -->
+  <header class="section">
+    <div class="wrap">
+      <div class="hero-banner reveal" style="--hero-image: url('/images/hero.jpg');">
+        <div class="hero-content">
+          <h1 data-i18n="home_title">BECC-Tokyo Cricket Club</h1>
+          <p class="lead" data-i18n="home_sub">
+            Community cricket in Tokyo — training, matches, nets, and events. Open to all.
+          </p>
 
-        <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top: 14px;">
-          <a class="btn primary" href="./signup.html" data-i18n="home_cta_signup">Player Signup</a>
-          <a class="btn" href="./schedule.html" data-i18n="home_cta_schedule">View Schedule</a>
-          <a class="btn" href="./updates.html" data-i18n="home_cta_updates">Latest Updates</a>
-        </div>
-
-        <!-- Main Tiles -->
-        <div class="grid three" style="margin-top:18px;">
-
-          <div class="card">
-            <h3 data-i18n="home_tile_signup">Player Signup</h3>
-            <p data-i18n="home_tile_signup_sub">New players welcome. Fill the form and we’ll contact you.</p>
-            <p style="margin-top:12px;">
-              <a class="btn primary" href="./signup.html" data-i18n="home_tile_signup_btn">Open Signup</a>
-            </p>
+          <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:14px;">
+            <a class="btn primary" href="./signup.html" data-i18n="home_cta_signup">Player Signup</a>
+            <a class="btn" href="./schedule.html" data-i18n="home_cta_schedule">View Schedule</a>
+            <a class="btn" href="./updates.html" data-i18n="home_cta_updates">Latest Updates</a>
           </div>
-
-          <div class="card">
-            <h3 data-i18n="home_tile_updates">Latest Updates</h3>
-            <p data-i18n="home_tile_updates_sub">Announcements, match info, practice changes.</p>
-            <p style="margin-top:12px;">
-              <a class="btn" href="./updates.html" data-i18n="home_tile_updates_btn">View Updates</a>
-            </p>
-          </div>
-
-          <div class="card">
-            <h3 data-i18n="home_tile_events">Events</h3>
-            <p data-i18n="home_tile_events_sub">Tournaments, socials, and special club days.</p>
-            <p style="margin-top:12px;">
-              <a class="btn" href="./updates.html" data-i18n="home_tile_events_btn">See Events</a>
-            </p>
-          </div>
-
-          <div class="card">
-            <h3 data-i18n="home_tile_schedule">View Schedule</h3>
-            <p data-i18n="home_tile_schedule_sub">Matches and training times in one place.</p>
-            <p style="margin-top:12px;">
-              <a class="btn" href="./schedule.html" data-i18n="home_tile_schedule_btn">Open Schedule</a>
-            </p>
-          </div>
-
-          <div class="card">
-            <h3 data-i18n="home_tile_training">Training</h3>
-            <p data-i18n="home_tile_training_sub">Net practice details and what to bring.</p>
-            <p style="margin-top:12px;">
-              <a class="btn" href="./rules.html#training" data-i18n="home_tile_training_btn">Training Info</a>
-            </p>
-          </div>
-
-          <div class="card">
-            <h3 data-i18n="home_tile_fields">Fields</h3>
-            <p data-i18n="home_tile_fields_sub">Grounds we use with map links.</p>
-            <p style="margin-top:12px;">
-              <a class="btn" href="./rules.html#special-field" data-i18n="home_tile_fields_btn">Field Rules</a>
-            </p>
-          </div>
-
-          <div class="card">
-            <h3 data-i18n="home_tile_umpiring">Umpiring</h3>
-            <p data-i18n="home_tile_umpiring_sub">Quick guide and expectations for umpires.</p>
-            <p style="margin-top:12px;">
-              <a class="btn" href="./rules.html#umpiring" data-i18n="home_tile_umpiring_btn">Umpiring Guide</a>
-            </p>
-          </div>
-
         </div>
       </div>
     </div>
-  </div>
-</header>
+  </header>
 
+  <!-- MAIN TILES -->
+  <section class="section">
+    <div class="wrap">
+      <div class="grid three reveal">
 
+        <div class="card">
+          <h3 data-i18n="home_tile_signup">Player Signup</h3>
+          <p data-i18n="home_tile_signup_sub">
+            New players welcome. Fill the form and we’ll contact you.
+          </p>
+          <p style="margin-top:12px;">
+            <a class="btn primary" href="./signup.html" data-i18n="home_tile_signup_btn">Open Signup</a>
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 data-i18n="home_tile_updates">Latest Updates</h3>
+          <p data-i18n="home_tile_updates_sub">
+            Announcements, match info, practice changes.
+          </p>
+          <p style="margin-top:12px;">
+            <a class="btn" href="./updates.html" data-i18n="home_tile_updates_btn">View Updates</a>
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 data-i18n="home_tile_events">Events</h3>
+          <p data-i18n="home_tile_events_sub">
+            Tournaments, socials, and special club days.
+          </p>
+          <p style="margin-top:12px;">
+            <a class="btn" href="./updates.html" data-i18n="home_tile_events_btn">See Events</a>
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 data-i18n="home_tile_schedule">View Schedule</h3>
+          <p data-i18n="home_tile_schedule_sub">
+            Matches and training times in one place.
+          </p>
+          <p style="margin-top:12px;">
+            <a class="btn" href="./schedule.html" data-i18n="home_tile_schedule_btn">Open Schedule</a>
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 data-i18n="home_tile_training">Training</h3>
+          <p data-i18n="home_tile_training_sub">
+            Net practice details and what to bring.
+          </p>
+          <p style="margin-top:12px;">
+            <a class="btn" href="./rules.html#training" data-i18n="home_tile_training_btn">Training Info</a>
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 data-i18n="home_tile_fields">Fields</h3>
+          <p data-i18n="home_tile_fields_sub">
+            Grounds we use with map links.
+          </p>
+          <p style="margin-top:12px;">
+            <a class="btn" href="./rules.html#special-field" data-i18n="home_tile_fields_btn">Field Rules</a>
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 data-i18n="home_tile_umpiring">Umpiring</h3>
+          <p data-i18n="home_tile_umpiring_sub">
+            Quick guide and expectations for umpires.
+          </p>
+          <p style="margin-top:12px;">
+            <a class="btn" href="./rules.html#umpiring" data-i18n="home_tile_umpiring_btn">Umpiring Guide</a>
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- QUICK LINKS + CONTACT -->
   <section class="section">
     <div class="wrap">
       <div class="grid two">
+
         <div class="panel pad-lg reveal">
           <h2>Quick Links</h2>
           <p class="lead">Make it easy for new players to join without Facebook.</p>
@@ -133,18 +154,23 @@
             <p><a href="mailto:info@becc-tokyo.org">info@becc-tokyo.org</a></p>
           </div>
         </div>
+
       </div>
     </div>
   </section>
 
+  <!-- FOOTER -->
   <footer>
     <div class="wrap foot">
       <div>
         <div style="display:flex; align-items:center; gap:10px;">
-          <div class="logo" aria-hidden="true" style="width:28px; height:28px; border-radius: 9px;"></div>
+          <div class="logo" aria-hidden="true" style="width:28px; height:28px; border-radius:9px;"></div>
           <div style="font-weight:700;">BECC-Tokyo</div>
         </div>
-        <small>© <span id="year"></span> <span data-i18n="footer_note">Built on GitHub Pages • BECC-Tokyo</span></small>
+        <small>
+          © <span id="year"></span>
+          <span data-i18n="footer_note">Built on GitHub Pages • BECC-Tokyo</span>
+        </small>
       </div>
     </div>
   </footer>
