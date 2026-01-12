@@ -5,8 +5,11 @@
 /* ---------- Design Tokens ---------- */
 :root{
   /* Brand */
-  --bg: #0F2A55;          /* brighter primary navy */
-  --bg2: #0A2246;         /* supporting navy */
+  /* --bg: #0F2A55;          /* brighter primary navy */
+ /* --bg2: #0A2246;         /* supporting navy */
+     /* Brand — daylight navy */
+  --bg:  #1E4A86;     /* primary background (bright navy) */
+  --bg2: #163C6E;     /* secondary background */
   --text: #F2F4F7;        /* off-white */
   --muted: rgba(242,244,247,.75);
   --faint: rgba(242,244,247,.55);
