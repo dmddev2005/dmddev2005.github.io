@@ -1,95 +1,1024 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title> Welcome to BECC-Tokyo | Cricket Club</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="BECC-Tokyo Cricket Club – community cricket in Tokyo" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BECC-Tokyo | Cricket Club</title>
+  <meta name="description" content="BECC-Tokyo Cricket Club — modern community cricket in Tokyo. Schedule, net practice, fields, updates, gallery, events, and archives." />
+
+  <!-- Open Graph (optional but nice) -->
+  <meta property="og:title" content="BECC-Tokyo Cricket Club" />
+  <meta property="og:description" content="Updates, schedule, net practice, fields, gallery, events." />
+  <meta property="og:type" content="website" />
 
   <style>
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: #0b0f14;
-      color: #ffffff;
-      line-height: 1.6;
+    /* =========================
+       Design tokens
+    ========================== */
+    :root{
+      --bg: #070A10;
+      --panel: rgba(255,255,255,.06);
+      --panel-2: rgba(255,255,255,.08);
+      --border: rgba(255,255,255,.10);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.70);
+      --faint: rgba(255,255,255,.55);
+
+      --shadow: 0 20px 60px rgba(0,0,0,.45);
+      --shadow-soft: 0 10px 30px rgba(0,0,0,.35);
+
+      --r-lg: 22px;
+      --r-md: 16px;
+      --r-sm: 12px;
+
+      --max: 1120px;
+      --pad: clamp(16px, 3vw, 28px);
+
+      --accent: 102 150 255;   /* rgb() via var */
+      --accent2: 156 90 255;
+      --ok: 80 210 160;
+      --warn: 255 195 90;
+      --danger: 255 95 120;
     }
-    header {
-      padding: 4rem 1.5rem;
-      text-align: center;
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+
+    /* =========================
+       Base
+    ========================== */
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color: var(--text);
+      background: radial-gradient(1200px 700px at 20% -10%, rgba(var(--accent), .22), transparent 55%),
+                  radial-gradient(1000px 600px at 90% 10%, rgba(var(--accent2), .18), transparent 60%),
+                  radial-gradient(1200px 800px at 50% 110%, rgba(80,210,160,.12), transparent 55%),
+                  var(--bg);
+      overflow-x:hidden;
     }
-    header h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
+    a{ color: rgba(var(--accent), 1); text-decoration: none; }
+    a:hover{ text-decoration: underline; }
+
+    /* Subtle noise overlay (wow-but-clean) */
+    .noise:before{
+      content:"";
+      position:fixed; inset:0;
+      pointer-events:none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E");
+      mix-blend-mode: overlay;
+      opacity:.20;
     }
-    header p {
-      color: #cfd8dc;
-      max-width: 600px;
-      margin: 0 auto 1.5rem;
+
+    /* =========================
+       Layout helpers
+    ========================== */
+    .wrap{ max-width: var(--max); margin:0 auto; padding: 0 var(--pad); }
+    .grid{ display:grid; gap: 16px; }
+    .grid.two{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+    .grid.three{ grid-template-columns: repeat(3, minmax(0,1fr)); }
+    @media (max-width: 900px){
+      .grid.two, .grid.three{ grid-template-columns: 1fr; }
     }
-    .cta a {
-      display: inline-block;
-      margin: 0.5rem;
-      padding: 0.75rem 1.5rem;
-      border-radius: 6px;
-      background: #1e88e5;
-      color: white;
+
+    .section{
+      padding: clamp(46px, 7vw, 84px) 0;
+      position: relative;
+    }
+    .section h2{
+      font-size: clamp(22px, 2.5vw, 30px);
+      margin: 0 0 10px;
+      letter-spacing: -0.02em;
+    }
+    .section p.lead{
+      margin: 0 0 22px;
+      color: var(--muted);
+      max-width: 70ch;
+    }
+
+    /* =========================
+       Glass panels
+    ========================== */
+    .panel{
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .panel.pad{ padding: 18px; }
+    .panel.pad-lg{ padding: 24px; }
+
+    .chip{
+      display:inline-flex; align-items:center; gap:8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.10);
+      color: var(--muted);
+      font-size: 13px;
+      white-space:nowrap;
+    }
+    .dot{ width:9px; height:9px; border-radius:99px; background: rgba(var(--accent),1); box-shadow: 0 0 0 6px rgba(var(--accent),.18); }
+
+    /* =========================
+       Top nav
+    ========================== */
+    .nav{
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      background: rgba(7,10,16,.55);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .nav .row{
+      display:flex; align-items:center; justify-content:space-between;
+      padding: 12px var(--pad);
+      max-width: var(--max);
+      margin: 0 auto;
+      gap: 12px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight: 700; letter-spacing: .01em;
+    }
+    .logo{
+      width: 34px; height: 34px; border-radius: 10px;
+      background: linear-gradient(135deg, rgba(var(--accent),1), rgba(var(--accent2),1));
+      box-shadow: 0 12px 30px rgba(var(--accent),.22);
+    }
+    .nav a{
+      color: rgba(255,255,255,.85);
       text-decoration: none;
-      font-weight: 500;
+      font-size: 14px;
     }
-    section {
-      padding: 3rem 1.5rem;
-      max-width: 900px;
-      margin: auto;
+    .nav a:hover{ color: rgba(255,255,255,.98); }
+    .links{ display:flex; align-items:center; gap: 14px; flex-wrap: wrap; justify-content:flex-end; }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding: 10px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      color: rgba(255,255,255,.92);
+      font-weight: 600;
+      box-shadow: 0 12px 30px rgba(0,0,0,.25);
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+      cursor:pointer;
     }
-    footer {
-      text-align: center;
-      padding: 2rem;
-      color: #9ea7ad;
-      font-size: 0.9rem;
+    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.085); border-color: rgba(255,255,255,.18); }
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(var(--accent),1), rgba(var(--accent2),1));
+      border-color: transparent;
+    }
+
+    /* =========================
+       Hero
+    ========================== */
+    .hero{
+      padding: clamp(44px, 7vw, 92px) 0 26px;
+      position: relative;
+    }
+    .hero .headline{
+      font-size: clamp(34px, 5vw, 56px);
+      line-height: 1.05;
+      margin: 0 0 14px;
+      letter-spacing: -0.03em;
+    }
+    .hero .sub{
+      margin: 0 0 22px;
+      color: var(--muted);
+      font-size: clamp(16px, 2vw, 18px);
+      max-width: 70ch;
+    }
+    .hero .actions{
+      display:flex; gap: 12px; flex-wrap: wrap;
+      margin: 18px 0 0;
+    }
+    .hero .meta{
+      display:flex; gap: 10px; flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .hero-card{
+      display:grid;
+      grid-template-columns: 1.3fr .7fr;
+      gap: 16px;
+      align-items: stretch;
+    }
+    @media (max-width: 900px){
+      .hero-card{ grid-template-columns: 1fr; }
+    }
+    .hero-right{
+      display:flex; flex-direction:column; gap: 16px;
+    }
+    .stat{
+      padding: 18px;
+    }
+    .stat b{ font-size: 18px; display:block; margin-bottom: 6px; }
+    .stat span{ color: var(--muted); font-size: 14px; }
+
+    .glow{
+      position:absolute; inset: -200px -200px auto -200px;
+      height: 380px;
+      background: radial-gradient(closest-side, rgba(var(--accent),.25), transparent 70%);
+      filter: blur(14px);
+      pointer-events:none;
+      opacity:.9;
+    }
+
+    /* =========================
+       Cards
+    ========================== */
+    .card{
+      padding: 18px;
+      border-radius: var(--r-lg);
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      transition: transform .18s ease, border-color .18s ease, background .18s ease;
+      position:relative;
+      overflow:hidden;
+    }
+    .card:hover{
+      transform: translateY(-2px);
+      border-color: rgba(255,255,255,.16);
+      background: rgba(255,255,255,.07);
+    }
+    .card h3{
+      margin: 0 0 8px;
+      font-size: 18px;
+      letter-spacing: -0.01em;
+    }
+    .card p{
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(0,0,0,.18);
+      border: 1px solid rgba(255,255,255,.10);
+      color: rgba(255,255,255,.86);
+      font-size: 12px;
+    }
+    .badge.ok { background: rgba(var(--ok), .14); border-color: rgba(var(--ok), .22); }
+    .badge.warn { background: rgba(var(--warn), .14); border-color: rgba(var(--warn), .22); }
+    .badge.danger { background: rgba(var(--danger), .14); border-color: rgba(var(--danger), .22); }
+
+    /* =========================
+       Table (Schedule)
+    ========================== */
+    .table{
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: var(--r-lg);
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+    }
+    .table th, .table td{
+      text-align:left;
+      padding: 14px 14px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      font-size: 14px;
+      color: rgba(255,255,255,.88);
+      vertical-align: top;
+    }
+    .table th{
+      color: rgba(255,255,255,.82);
+      font-weight: 700;
+      background: rgba(255,255,255,.04);
+    }
+    .table tr:last-child td{ border-bottom: none; }
+    .mono{ font-variant-numeric: tabular-nums; }
+
+    /* =========================
+       Accordion (Archives)
+    ========================== */
+    details{
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: var(--r-lg);
+      background: rgba(255,255,255,.04);
+      padding: 14px 16px;
+    }
+    details + details{ margin-top: 12px; }
+    summary{
+      cursor: pointer;
+      list-style: none;
+      font-weight: 700;
+      color: rgba(255,255,255,.90);
+      display:flex; align-items:center; justify-content:space-between;
+      gap: 12px;
+    }
+    summary::-webkit-details-marker{ display:none; }
+    .chev{ opacity:.7; transition: transform .18s ease; }
+    details[open] .chev{ transform: rotate(180deg); }
+    .archive-body{
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .archive-links a{
+      display:inline-block;
+      margin-right: 10px;
+      margin-top: 8px;
+      padding: 8px 10px;
+      border-radius: 12px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.10);
+      color: rgba(255,255,255,.88);
+      text-decoration:none;
+      font-size: 13px;
+    }
+    .archive-links a:hover{ background: rgba(255,255,255,.09); }
+
+    /* =========================
+       Gallery + Modal
+    ========================== */
+    .gallery{
+      display:grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap: 12px;
+    }
+    @media (max-width: 1000px){
+      .gallery{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+    }
+    .thumb{
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      aspect-ratio: 4 / 3;
+      overflow:hidden;
+      cursor:pointer;
+      position:relative;
+      transition: transform .18s ease, border-color .18s ease;
+    }
+    .thumb:hover{ transform: translateY(-2px); border-color: rgba(255,255,255,.16); }
+    .thumb img{
+      width:100%; height:100%; object-fit: cover;
+      display:block;
+      filter: saturate(1.05) contrast(1.02);
+    }
+    .thumb:after{
+      content:"";
+      position:absolute; inset:0;
+      background: linear-gradient(to top, rgba(0,0,0,.35), transparent 55%);
+      opacity:.9;
+      pointer-events:none;
+    }
+    .thumb .cap{
+      position:absolute; left:12px; bottom:10px;
+      font-size: 13px;
+      color: rgba(255,255,255,.92);
+      z-index: 1;
+    }
+
+    .modal{
+      position: fixed; inset:0;
+      display:none;
+      place-items:center;
+      background: rgba(0,0,0,.62);
+      z-index: 80;
+      padding: 18px;
+    }
+    .modal.open{ display:grid; }
+    .modal-card{
+      width: min(980px, 96vw);
+      border-radius: 22px;
+      overflow:hidden;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(10,12,18,.82);
+      backdrop-filter: blur(14px);
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+    .modal-card img{
+      width:100%;
+      height: auto;
+      display:block;
+      max-height: 72vh;
+      object-fit: cover;
+    }
+    .modal-bar{
+      display:flex; align-items:center; justify-content:space-between;
+      padding: 12px 14px;
+      border-top: 1px solid rgba(255,255,255,.10);
+      color: rgba(255,255,255,.86);
+      font-size: 14px;
+      gap: 10px;
+    }
+    .x{
+      border:none;
+      background: rgba(255,255,255,.08);
+      color: rgba(255,255,255,.92);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 12px;
+      padding: 8px 10px;
+      cursor:pointer;
+    }
+    .x:hover{ background: rgba(255,255,255,.10); }
+
+    /* =========================
+       Footer
+    ========================== */
+    footer{
+      padding: 30px 0 50px;
+      color: var(--faint);
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+    .foot{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .foot small{ color: var(--faint); }
+    .social a{ margin-right: 10px; }
+
+    /* =========================
+       Scroll reveal
+    ========================== */
+    .reveal{ opacity: 0; transform: translateY(12px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.in{ opacity: 1; transform: translateY(0); }
+
+    /* Anchor offset for sticky nav */
+    [id]{ scroll-margin-top: 90px; }
+
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      * { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
+      .noise:before{ display:none; }
     }
   </style>
 </head>
 
-<body>
+<body class="noise">
+  <!-- Sticky Nav -->
+  <div class="nav">
+    <div class="row">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <div style="font-size:14px; opacity:.9;">BECC-Tokyo</div>
+          <div style="font-size:12px; color: rgba(255,255,255,.65);">Cricket Club • Tokyo</div>
+        </div>
+      </div>
 
-<header>
-  <h1>BECC-Tokyo Cricket Club</h1>
-  <p>Community cricket in Tokyo. Open to all skill levels.</p>
-  <div class="cta">
-    <a href="#join">Join the Club</a>
-    <a href="#schedule">Schedule</a>
+      <div class="links">
+        <a href="#updates">Updates</a>
+        <a href="#schedule">Schedule</a>
+        <a href="#nets">Net Practice</a>
+        <a href="#fields">Fields</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#events">Events</a>
+        <a href="#archives">Archives</a>
+        <a href="#contact" class="btn">Contact</a>
+        <a href="#join" class="btn primary">Join / Signup</a>
+      </div>
+    </div>
   </div>
-</header>
 
-<section id="about">
-  <h2>About Us</h2>
-  <p>
-    BECC-Tokyo is a community cricket club based in Tokyo, bringing together players from diverse backgrounds who share a love for the game.
-  </p>
-</section>
+  <!-- Hero -->
+  <header class="hero">
+    <div class="glow" aria-hidden="true"></div>
+    <div class="wrap hero-card panel pad-lg reveal">
+      <div>
+        <div class="chip"><span class="dot"></span> Community cricket in Tokyo</div>
+        <h1 class="headline">BECC-Tokyo Cricket Club</h1>
+        <p class="sub">
+          A modern club hub for match schedules, net sessions, field locations, updates, galleries, and events —
+          designed for everyone (no Facebook required).
+        </p>
 
-<section id="schedule">
-  <h2>Schedule</h2>
-  <p>
-    Training sessions and match schedules will be published here.
-  </p>
-</section>
+        <div class="actions">
+          <!-- Replace # with your real links -->
+          <a class="btn primary" href="#join">Player Signup</a>
+          <a class="btn" href="#schedule">View Schedule</a>
+          <a class="btn" href="#gallery">See Gallery</a>
+        </div>
 
-<section id="join">
-  <h2>Join the Club</h2>
-  <p>
-    New players are always welcome — beginners and experienced players alike.
-  </p>
-  <p>
-    <a href="#" style="color:#64b5f6;">Player Signup Form (coming soon)</a>
-  </p>
-</section>
+        <div class="meta">
+          <span class="chip">📍 Tokyo, Japan</span>
+          <span class="chip">🏏 All skill levels welcome</span>
+          <span class="chip">🗓️ Weekends + evenings</span>
+        </div>
+      </div>
 
-<footer>
-  © BECC-Tokyo Cricket Club
-</footer>
+      <div class="hero-right">
+        <div class="panel stat">
+          <b id="nextEventTitle">Next: Training Session</b>
+          <span id="nextEventMeta">Loading next event…</span>
+        </div>
+        <div class="panel stat">
+          <b>Quick Links</b>
+          <span>
+            <a href="#join">Signup</a> · <a href="#nets">Net practice</a> · <a href="#fields">Field maps</a>
+          </span>
+        </div>
+        <div class="panel stat">
+          <b>Status</b>
+          <span id="statusLine">Updating…</span>
+        </div>
+      </div>
+    </div>
+  </header>
 
+  <!-- Latest Updates -->
+  <section id="updates" class="section">
+    <div class="wrap reveal">
+      <h2>Latest Updates</h2>
+      <p class="lead">Announcements, match notes, practice changes, and club news. (Edit these in one place in the code.)</p>
+      <div id="updatesGrid" class="grid three"></div>
+    </div>
+  </section>
+
+  <!-- Schedule -->
+  <section id="schedule" class="section">
+    <div class="wrap reveal">
+      <h2>Schedule</h2>
+      <p class="lead">Upcoming matches and sessions. Keep this as the source of truth for all players.</p>
+      <div class="panel pad-lg">
+        <table class="table" aria-label="Schedule table">
+          <thead>
+            <tr>
+              <th style="width:160px;">Date</th>
+              <th>Type</th>
+              <th>Opponent / Details</th>
+              <th style="width:220px;">Location</th>
+              <th style="width:120px;">Time</th>
+            </tr>
+          </thead>
+          <tbody id="scheduleBody"></tbody>
+        </table>
+        <div style="margin-top:12px; color: var(--muted); font-size: 13px;">
+          Tip: You can later swap this table for a Google Calendar embed if you want.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Net Practice -->
+  <section id="nets" class="section">
+    <div class="wrap reveal">
+      <h2>Net Practice</h2>
+      <p class="lead">Where and when we train. Share details for new players: what to bring, fees, meeting point, etc.</p>
+
+      <div class="grid two">
+        <div class="panel pad-lg">
+          <div class="chip"><span class="dot"></span> Weekly nets</div>
+          <h3 style="margin:12px 0 8px;">Typical Training Format</h3>
+          <ul style="margin: 0; padding-left: 18px; color: var(--muted);">
+            <li>Warm-up + throwing (15–20 mins)</li>
+            <li>Batting rotation (nets) + bowling spells</li>
+            <li>Fielding drills (catches / ground fielding)</li>
+            <li>Short scenario game (time permitting)</li>
+          </ul>
+        </div>
+
+        <div class="panel pad-lg">
+          <div class="chip">🎒 What to bring</div>
+          <h3 style="margin:12px 0 8px;">Essentials</h3>
+          <div class="grid" style="grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px;">
+            <div class="card">
+              <h3>Gear</h3>
+              <p>Cricket shoes, gloves, bat (if you have), box if batting.</p>
+            </div>
+            <div class="card">
+              <h3>Water</h3>
+              <p>Hydration is key—especially in Tokyo summers.</p>
+            </div>
+            <div class="card">
+              <h3>Arrive early</h3>
+              <p>Plan 10 mins buffer to find the group & stretch.</p>
+            </div>
+            <div class="card">
+              <h3>New players</h3>
+              <p>No gear? No problem. We can help you start.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Fields -->
+  <section id="fields" class="section">
+    <div class="wrap reveal">
+      <h2>Fields</h2>
+      <p class="lead">Our usual grounds. Add Google Maps links so players can navigate easily.</p>
+
+      <div id="fieldsGrid" class="grid three"></div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section id="gallery" class="section">
+    <div class="wrap reveal">
+      <h2>Gallery</h2>
+      <p class="lead">A few highlights. Replace these placeholder images with your photos.</p>
+      <div id="galleryGrid" class="gallery"></div>
+    </div>
+  </section>
+
+  <!-- Events -->
+  <section id="events" class="section">
+    <div class="wrap reveal">
+      <h2>Events</h2>
+      <p class="lead">Socials, tournaments, and special days. Keep it simple and clear.</p>
+      <div id="eventsGrid" class="grid three"></div>
+    </div>
+  </section>
+
+  <!-- Archives -->
+  <section id="archives" class="section">
+    <div class="wrap reveal">
+      <h2>Archives</h2>
+      <p class="lead">Past seasons, scorecards, photosets, and notes. This makes the club feel “real”.</p>
+
+      <div id="archivesList" class="grid"></div>
+    </div>
+  </section>
+
+  <!-- Join / Contact -->
+  <section id="join" class="section">
+    <div class="wrap reveal">
+      <div class="grid two">
+        <div class="panel pad-lg">
+          <h2 style="margin-top:0;">Join / Signup</h2>
+          <p class="lead">Drop your details and we’ll add you to training + match comms.</p>
+
+          <!-- Replace this with your real form link (Google Form recommended) -->
+          <div class="card">
+            <h3>Player Signup Form</h3>
+            <p>Replace the link below with your Google Form URL.</p>
+            <p style="margin-top:10px;">
+              <a class="btn primary" href="#" target="_blank" rel="noopener">Open Signup Form</a>
+            </p>
+          </div>
+
+          <p style="color: var(--muted); font-size: 13px; margin-top: 14px;">
+            Later we can embed the Google Form directly on this page.
+          </p>
+        </div>
+
+        <div id="contact" class="panel pad-lg">
+          <h2 style="margin-top:0;">Contact</h2>
+          <p class="lead">Make it easy for new players to reach you.</p>
+
+          <div class="grid" style="grid-template-columns: 1fr; gap: 10px;">
+            <div class="card">
+              <h3>Email</h3>
+              <p><a href="mailto:info@becc-tokyo.org">info@becc-tokyo.org</a> (recommended)</p>
+            </div>
+            <div class="card">
+              <h3>Social</h3>
+              <p>
+                <a href="#" target="_blank" rel="noopener">Facebook</a> ·
+                <a href="#" target="_blank" rel="noopener">Instagram</a> ·
+                <a href="#" target="_blank" rel="noopener">LINE / WhatsApp</a>
+              </p>
+            </div>
+            <div class="card">
+              <h3>Club Note</h3>
+              <p>We keep the official schedule and club info here so everyone can access it.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap foot">
+      <div>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div class="logo" aria-hidden="true" style="width:28px; height:28px; border-radius: 9px;"></div>
+          <div style="font-weight:700;">BECC-Tokyo</div>
+        </div>
+        <small>© <span id="year"></span> BECC-Tokyo Cricket Club. Built on GitHub Pages.</small>
+      </div>
+      <div class="social">
+        <a href="#updates">Updates</a>
+        <a href="#schedule">Schedule</a>
+        <a href="#join">Join</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Gallery Modal -->
+  <div id="modal" class="modal" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-label="Image preview">
+      <img id="modalImg" alt="" />
+      <div class="modal-bar">
+        <div id="modalCap">Caption</div>
+        <button class="x" id="modalClose" aria-label="Close preview">Close ✕</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ==========================================================
+    // ✅ EDIT HERE: Keep your content in simple lists
+    // ==========================================================
+
+    const CLUB_STATUS = "Open for new players • Next match details posted below";
+
+    const UPDATES = [
+      {
+        title: "Weekend match confirmed",
+        date: "2026-01-14",
+        tag: "Match",
+        tone: "ok",
+        text: "Squad selection and arrival time will be updated by Friday evening."
+      },
+      {
+        title: "Net practice: new slot",
+        date: "2026-01-12",
+        tag: "Practice",
+        tone: "warn",
+        text: "We’re testing a new evening slot. Please RSVP in the signup form if you’re attending."
+      },
+      {
+        title: "New players welcome",
+        date: "2026-01-10",
+        tag: "Club",
+        tone: "ok",
+        text: "Beginners are welcome. If you don’t have gear yet, we can help you get started."
+      }
+    ];
+
+    const SCHEDULE = [
+      { date:"2026-01-18", type:"Match", details:"League fixture (TBD opponent)", location:"Tokyo (TBD ground)", time:"09:00" },
+      { date:"2026-01-22", type:"Net Practice", details:"Bowling + batting rotations", location:"Net facility (TBD)", time:"19:30" },
+      { date:"2026-01-25", type:"Match", details:"Friendly / training game", location:"Tokyo (TBD ground)", time:"10:00" }
+    ];
+
+    const FIELDS = [
+      {
+        name: "Primary Ground (Example)",
+        area: "Edogawa / Arakawa area",
+        note: "Arrive 20 mins early for warm-up + boundary setup.",
+        map: "https://maps.google.com/?q=Tokyo"
+      },
+      {
+        name: "Training Nets (Example)",
+        area: "Central Tokyo",
+        note: "Indoor nets. Please bring clean shoes.",
+        map: "https://maps.google.com/?q=Tokyo"
+      },
+      {
+        name: "Alternate Ground (Example)",
+        area: "Tama / West Tokyo",
+        note: "Used for friendlies and tournaments.",
+        map: "https://maps.google.com/?q=Tokyo"
+      }
+    ];
+
+    const EVENTS = [
+      { title:"Club Social Night", date:"2026-02-01", tag:"Social", tone:"ok", text:"Post-match meetup. Venue TBA." },
+      { title:"Tournament Weekend", date:"2026-03-07", tag:"Tournament", tone:"warn", text:"Availability check coming soon." },
+      { title:"Kit Order Window", date:"2026-01-28", tag:"Admin", tone:"ok", text:"Order deadline end of month." }
+    ];
+
+    const ARCHIVES = [
+      {
+        season: "2025 Season",
+        summary: "Results, photos, and notes from 2025.",
+        links: [
+          { label:"Scorecards", href:"#"},
+          { label:"Photo Album", href:"#"},
+          { label:"Highlights", href:"#"}
+        ]
+      },
+      {
+        season: "2024 Season",
+        summary: "A strong season with new players joining.",
+        links: [
+          { label:"Scorecards", href:"#"},
+          { label:"Photo Album", href:"#"}
+        ]
+      }
+    ];
+
+    // Replace these with your actual photo URLs.
+    // Tip: You can use images in your GitHub repo like: ./images/photo1.jpg
+    const GALLERY = [
+      { src:"https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=1200&q=70", cap:"Training session" },
+      { src:"https://images.unsplash.com/photo-1508341591423-4347099e1f19?auto=format&fit=crop&w=1200&q=70", cap:"Match day vibes" },
+      { src:"https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=1200&q=70", cap:"Team photo" },
+      { src:"https://images.unsplash.com/photo-1508341591423-4347099e1f19?auto=format&fit=crop&w=1200&q=70", cap:"Big moments" },
+      { src:"https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=1200&q=70", cap:"Nets at night" },
+      { src:"https://images.unsplash.com/photo-1508341591423-4347099e1f19?auto=format&fit=crop&w=1200&q=70", cap:"Friendly match" },
+      { src:"https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=1200&q=70", cap:"Fielding drills" },
+      { src:"https://images.unsplash.com/photo-1508341591423-4347099e1f19?auto=format&fit=crop&w=1200&q=70", cap:"Weekend league" }
+    ];
+
+    // ==========================================================
+    // Rendering helpers
+    // ==========================================================
+    const $ = (sel) => document.querySelector(sel);
+    const el = (tag, attrs={}, children=[]) => {
+      const node = document.createElement(tag);
+      Object.entries(attrs).forEach(([k,v]) => {
+        if (k === "class") node.className = v;
+        else if (k.startsWith("on") && typeof v === "function") node.addEventListener(k.slice(2), v);
+        else node.setAttribute(k, v);
+      });
+      children.forEach(c => node.appendChild(typeof c === "string" ? document.createTextNode(c) : c));
+      return node;
+    };
+
+    function badge(tone, label){
+      const cls = tone ? `badge ${tone}` : "badge";
+      return el("span", { class: cls }, [label]);
+    }
+
+    function formatDate(iso){
+      // Keep it simple and readable (YYYY-MM-DD => Mon, 18 Jan 2026)
+      const d = new Date(iso + "T00:00:00");
+      if (Number.isNaN(d.getTime())) return iso;
+      return d.toLocaleDateString(undefined, { weekday:"short", day:"2-digit", month:"short", year:"numeric" });
+    }
+
+    function nextUpcoming(items){
+      const now = new Date();
+      const upcoming = items
+        .map(x => ({...x, _d: new Date(x.date + "T00:00:00")}))
+        .filter(x => !Number.isNaN(x._d.getTime()))
+        .filter(x => x._d >= new Date(now.getFullYear(), now.getMonth(), now.getDate()))
+        .sort((a,b)=>a._d-b._d);
+      return upcoming[0] || null;
+    }
+
+    // ==========================================================
+    // Render content
+    // ==========================================================
+    function render(){
+      $("#year").textContent = new Date().getFullYear();
+      $("#statusLine").textContent = CLUB_STATUS;
+
+      // Updates
+      const updatesGrid = $("#updatesGrid");
+      UPDATES.forEach(u => {
+        const card = el("div", { class:"card" }, [
+          el("div", { style:"display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:10px;" }, [
+            el("div", {}, [
+              el("div", { style:"font-weight:800; font-size:16px; letter-spacing:-.01em;" }, [u.title]),
+              el("div", { style:"color: var(--faint); font-size: 12px; margin-top:4px;" }, [formatDate(u.date)])
+            ]),
+            badge(u.tone, u.tag)
+          ]),
+          el("p", {}, [u.text])
+        ]);
+        updatesGrid.appendChild(card);
+      });
+
+      // Schedule
+      const tbody = $("#scheduleBody");
+      SCHEDULE.forEach(s => {
+        const tr = el("tr", {}, [
+          el("td", { class:"mono" }, [formatDate(s.date)]),
+          el("td", {}, [s.type]),
+          el("td", {}, [s.details]),
+          el("td", {}, [s.location]),
+          el("td", { class:"mono" }, [s.time])
+        ]);
+        tbody.appendChild(tr);
+      });
+
+      // Fields
+      const fieldsGrid = $("#fieldsGrid");
+      FIELDS.forEach(f => {
+        fieldsGrid.appendChild(
+          el("div", { class:"card" }, [
+            el("div", { style:"display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:10px;" }, [
+              el("h3", {}, [f.name]),
+              badge("ok", "Map")
+            ]),
+            el("p", {}, [f.area]),
+            el("p", { style:"margin-top:10px;" }, [f.note]),
+            el("p", { style:"margin-top:12px;" }, [
+              el("a", { class:"btn", href:f.map, target:"_blank", rel:"noopener", style:"display:inline-flex;" }, ["Open Map ↗"])
+            ])
+          ])
+        );
+      });
+
+      // Events
+      const eventsGrid = $("#eventsGrid");
+      EVENTS.forEach(e => {
+        eventsGrid.appendChild(
+          el("div", { class:"card" }, [
+            el("div", { style:"display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:10px;" }, [
+              el("div", {}, [
+                el("div", { style:"font-weight:800; font-size:16px; letter-spacing:-.01em;" }, [e.title]),
+                el("div", { style:"color: var(--faint); font-size: 12px; margin-top:4px;" }, [formatDate(e.date)])
+              ]),
+              badge(e.tone, e.tag)
+            ]),
+            el("p", {}, [e.text])
+          ])
+        );
+      });
+
+      // Archives
+      const archivesList = $("#archivesList");
+      ARCHIVES.forEach(a => {
+        const details = el("details", {}, [
+          el("summary", {}, [
+            el("span", {}, [a.season]),
+            el("span", { class:"chev" }, ["▾"])
+          ]),
+          el("div", { class:"archive-body" }, [
+            el("div", {}, [a.summary]),
+            el("div", { class:"archive-links" }, a.links.map(l => el("a", { href:l.href }, [l.label])))
+          ])
+        ]);
+        archivesList.appendChild(details);
+      });
+
+      // Gallery
+      const galleryGrid = $("#galleryGrid");
+      GALLERY.forEach((g, idx) => {
+        const img = el("img", { src:g.src, alt:g.cap, loading:"lazy" });
+        const t = el("div", { class:"thumb", role:"button", tabindex:"0", "data-idx": String(idx) }, [
+          img,
+          el("div", { class:"cap" }, [g.cap])
+        ]);
+        t.addEventListener("click", () => openModal(idx));
+        t.addEventListener("keydown", (ev) => {
+          if (ev.key === "Enter" || ev.key === " ") openModal(idx);
+        });
+        galleryGrid.appendChild(t);
+      });
+
+      // Hero "Next event" block
+      const next = nextUpcoming([...SCHEDULE.map(s => ({
+        date: s.date, title: s.type, meta: `${s.time} • ${s.location}`
+      })), ...EVENTS.map(e => ({
+        date: e.date, title: e.title, meta: e.tag
+      }))]);
+
+      if (next){
+        $("#nextEventTitle").textContent = next.title;
+        $("#nextEventMeta").textContent = `${formatDate(next.date)} • ${next.meta}`;
+      } else {
+        $("#nextEventTitle").textContent = "No upcoming events posted";
+        $("#nextEventMeta").textContent = "Add items to Schedule or Events in the code.";
+      }
+    }
+
+    // ==========================================================
+    // Gallery modal
+    // ==========================================================
+    const modal = $("#modal");
+    const modalImg = $("#modalImg");
+    const modalCap = $("#modalCap");
+    const closeBtn = $("#modalClose");
+
+    function openModal(idx){
+      const g = GALLERY[idx];
+      modalImg.src = g.src;
+      modalImg.alt = g.cap;
+      modalCap.textContent = g.cap;
+      modal.classList.add("open");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+    function closeModal(){
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+      modalImg.src = "";
+    }
+    closeBtn.addEventListener("click", closeModal);
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) closeModal();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && modal.classList.contains("open")) closeModal();
+    });
+
+    // ==========================================================
+    // Smooth scroll + reveal
+    // ==========================================================
+    document.documentElement.style.scrollBehavior = "smooth";
+
+    const io = new IntersectionObserver((entries) => {
+      for (const ent of entries){
+        if (ent.isIntersecting) ent.target.classList.add("in");
+      }
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll(".reveal").forEach(elm => io.observe(elm));
+
+    // Boot
+    render();
+  </script>
 </body>
 </html>
