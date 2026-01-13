@@ -65,7 +65,11 @@
         <!-- Replace the action URL with your Formspree endpoint later:
              Example: https://formspree.io/f/xxxxabcd
         -->
-        <form id="signupForm" method="POST" action="" novalidate>
+        <form id="signupForm" method="POST" action="https://formspree.io/f/xlggezal" novalidate>
+  <input type="hidden" name="_subject" value="New BECC-Tokyo Player Signup">
+  <input type="hidden" name="_template" value="table">
+  <input type="hidden" name="_captcha" value="false">
+
 
           <div class="form-grid">
 
@@ -79,18 +83,7 @@
               <input id="age" name="age" type="number" min="5" max="99" required />
             </div>
 
-            <div>
-              <label for="gender">Gender</label>
-              <select id="gender" name="gender">
-                <option value="">Prefer not to say</option>
-                <option>Male</option>
-                <option>Female</option>
-                <option>Non-binary</option>
-                <option>Other</option>
-              </select>
-            </div>
-
-            <div class="full">
+           <div class="full">
               <label for="city">City *</label>
               <input id="city" name="city" type="text" required autocomplete="address-level2" />
             </div>
@@ -122,6 +115,7 @@
                 <option>Bowling</option>
                 <option>Batting</option>
                 <option>Wicket keeping</option>
+                 <option>First time </option>
               </select>
             </div>
 
