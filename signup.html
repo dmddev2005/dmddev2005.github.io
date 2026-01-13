@@ -70,64 +70,85 @@
   <input type="hidden" name="_template" value="table">
   <input type="hidden" name="_captcha" value="false">
 
+  <!-- Makes "Reply" go to the player (Formspree supports reply-to via _replyto) -->
+  <input type="hidden" name="_replyto" value="">
 
-          <div class="form-grid">
+  <div class="form-grid">
 
-            <div class="full">
-              <label for="fullName">Full Name *</label>
-              <input id="fullName" name="fullName" type="text" required autocomplete="name" />
-            </div>
+    <div class="full">
+      <label for="fullName">Full Name *</label>
+      <input id="fullName" name="full_name" type="text" required autocomplete="name" />
+    </div>
 
-            <div>
-              <label for="age">Age *</label>
-              <input id="age" name="age" type="number" min="5" max="99" required />
-            </div>
+    <div>
+      <label for="age">Age *</label>
+      <input id="age" name="age" type="number" min="5" max="99" required />
+    </div>
 
-           <div class="full">
-              <label for="city">City *</label>
-              <input id="city" name="city" type="text" required autocomplete="address-level2" />
-            </div>
+   <div class="full">
+      <label for="city">City *</label>
+      <input id="city" name="city" type="text" required autocomplete="address-level2" />
+    </div>
 
-            <div class="full">
-              <label for="email">Contact Email *</label>
-              <input id="email" name="email" type="email" required autocomplete="email" />
-            </div>
+    <div class="full">
+      <label for="email">Contact Email *</label>
+      <input id="email" name="email" type="email" required autocomplete="email" />
+      <div class="hint">We’ll use this to contact you about matches and training.</div>
+    </div>
 
-            <div class="full">
-              <label for="phone">Phone Number</label>
-              <input id="phone" name="phone" type="tel" autocomplete="tel" />
-              <div class="hint">Include country code if possible (e.g., +81...).</div>
-            </div>
+    <div class="full">
+      <label for="phone">Phone Number</label>
+      <input id="phone" name="phone" type="tel" autocomplete="tel" />
+      <div class="hint">Include country code (e.g., +81...).</div>
+    </div>
 
-            <div>
-              <label for="level">Level *</label>
-              <select id="level" name="level" required>
-                <option value="" selected disabled>Select one</option>
-                <option>Beginner</option>
-                <option>Experienced</option>
-              </select>
-            </div>
+    <div>
+      <label for="level">Level *</label>
+      <select id="level" name="level" required>
+        <option value="" selected disabled>Select one</option>
+        <option>Beginner</option>
+        <option>Experienced</option>
+        <option>First Timer</option>
+      </select>
+    </div>
 
-            <div>
-              <label for="skill">Skill *</label>
-              <select id="skill" name="skill" required>
-                <option value="" selected disabled>Select one</option>
-                <option>Bowling</option>
-                <option>Batting</option>
-                <option>Wicket keeping</option>
-                 <option>First time </option>
-              </select>
-            </div>
+    <div>
+      <label for="skill">Skill *</label>
+      <select id="skill" name="skill" required>
+        <option value="" selected disabled>Select one</option>
+        <option>Bowling</option>
+        <option>Batting</option>
+        <option>Wicket keeping</option>
+        <option>All-Rounder</option>
+        <option>Newbie</option>
+      </select>
+    </div>
 
-          </div>
+  </div>
 
-          <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:18px;">
-            <button class="btn primary" type="submit">Submit</button>
-            <a class="btn" href="mailto:info@becc-tokyo.org?subject=BECC%20Signup">Or email us</a>
-          </div>
+  <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:18px;">
+    <button class="btn primary" type="submit">Submit</button>
+    <a class="btn" href="mailto:info@becc-tokyo.org?subject=BECC%20Signup">Or email us</a>
+  </div>
 
-          <div id="formMsg" class="hint" style="margin-top:12px;"></div>
-        </form>
+  <div id="formMsg" class="hint" style="margin-top:12px;"></div>
+</form>
+
+<script>
+  // Optional UX: show a message and set reply-to automatically
+  (function(){
+    const form = document.getElementById('signupForm');
+    const msg  = document.getElementById('formMsg');
+
+    form.addEventListener('submit', function(){
+      const email = document.getElementById('email')?.value || '';
+      const replyTo = form.querySelector('input[name="_replyto"]');
+      if(replyTo) replyTo.value = email;
+
+      msg.textContent = "Submitting… If you don’t see a confirmation, please try again or email us.";
+    });
+  })();
+</script>
 
       </div>
     </div>
