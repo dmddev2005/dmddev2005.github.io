@@ -12,7 +12,8 @@ const I18N = {
     nav_signup: "Join / Signup",
 
     home_title: "BECC-Tokyo Cricket Club",
-    home_sub: "A modern club hub for schedule, net sessions, fields, rules, photos, events — designed for everyone (no Facebook required).",
+    home_sub: "Welcome to the British Embassy Cricket Club – Tokyo. We play in the Japan Cup League (South Kanto) and friendly matches throughout the year, with the goal of promoting cricket in Japan and enjoying the game as a social event.",
+    home_sub: "ブリティッシュ・エンバシー・クリケット・クラブ東京へようこそ。私たちはジャパンカップリーグ（南関東）および年間を通じてフレンドリーマッチに参加し、クリケットを日本で広め、スポーツとしてだけでなく社交の場としても楽しむことを目指しています。",
     home_cta_signup: "Player Signup",
     home_cta_schedule: "View Schedule",
     home_cta_rules: "Read Rules",
