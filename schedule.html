@@ -4,64 +4,144 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>BECC-Tokyo | Schedule</title>
+  <meta name="description" content="Match and event schedule for BECC-Tokyo Cricket Club." />
   <link rel="stylesheet" href="./assets/styles.css" />
 </head>
 
-<body class="noise">
+<body>
+  <!-- NAV -->
   <div class="nav">
     <div class="row">
       <div class="brand">
         <div class="logo" aria-hidden="true"></div>
         <div>
-          <div style="font-size:14px; opacity:.9;">BECC-Tokyo</div>
-          <div style="font-size:12px; color: rgba(255,255,255,.65);">Cricket Club • Tokyo</div>
+          <div style="font-size:14px; opacity:.95;">BECC-Tokyo</div>
+          <div style="font-size:12px; opacity:.85;">Cricket Club • Tokyo</div>
         </div>
       </div>
 
       <div class="links">
-        <a href="./index.html" data-i18n="nav_updates">Updates</a>
-        <a href="./schedule.html" data-i18n="nav_schedule">Schedule</a>
-        <a href="./rules.html" data-i18n="nav_rules">Rules</a>
-        <a href="./signup.html" class="btn primary" data-i18n="nav_signup">Join / Signup</a>
+        <a href="./updates.html">Updates</a>
+        <a href="./schedule.html">Schedule</a>
+        <a href="./rules.html">Rules</a>
+        <a href="./gallery.html">Gallery</a>
+        <a href="./signup.html" class="btn primary">Join / Signup</a>
         <button id="langToggle" class="btn" type="button">日本語</button>
       </div>
     </div>
   </div>
 
-  <main class="section">
+  <!-- HEADER -->
+  <header class="section">
     <div class="wrap">
-      <div class="panel pad-lg reveal">
-        <h1 data-i18n="schedule_title">Schedule</h1>
-        <p class="lead" data-i18n="schedule_sub">Upcoming matches and training. You can use the table or Google Calendar (or both).</p>
+      <h1>Schedule</h1>
+      <p class="lead">
+        Matches, tournaments, and club fixtures for the season.
+      </p>
+    </div>
+  </header>
 
-        <div class="card">
-          <h3>Google Calendar</h3>
-          <p>Replace the iframe URL with your calendar embed link.</p>
+  <!-- CONFIRMED / UPCOMING -->
+  <section class="section">
+    <div class="wrap">
+
+      <div class="card" style="margin-bottom:18px;">
+        <h2 style="margin-bottom:10px;">Upcoming & Confirmed</h2>
+        <p class="lead">Confirmed fixtures and key events.</p>
+
+        <div class="grid two" style="margin-top:14px;">
+
+          <div class="card">
+            <h3>Friendly Match vs YCAC</h3>
+            <p><strong>Date:</strong> April 12</p>
+            <p><strong>Type:</strong> Friendly</p>
+          </div>
+
+          <div class="card">
+            <h3>Friendly Match vs YCAC</h3>
+            <p><strong>Date:</strong> November 2</p>
+            <p><strong>Type:</strong> Friendly</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- FULL SCHEDULE -->
+      <div class="card">
+        <h2 style="margin-bottom:12px;">Full Schedule</h2>
+
+        <div style="overflow-x:auto;">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Event</th>
+                <th>Opponent / Details</th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr>
+                <td>April 12</td>
+                <td>Friendly Match</td>
+                <td>YCAC</td>
+                <td>Confirmed</td>
+              </tr>
+
+              <tr>
+                <td>November 2</td>
+                <td>Friendly Match</td>
+                <td>YCAC</td>
+                <td>Confirmed</td>
+              </tr>
+
+              <tr>
+                <td>TBD</td>
+                <td>Friendship Cup</td>
+                <td>Multiple teams</td>
+                <td>Tournament</td>
+              </tr>
+
+              <tr>
+                <td>TBD</td>
+                <td>Friendly Match</td>
+                <td>Chuo University</td>
+                <td>To be confirmed</td>
+              </tr>
+
+              <tr>
+                <td>Season dates</td>
+                <td>Japan Cup League Matches</td>
+                <td>South Kanto Division</td>
+                <td>League fixtures</td>
+              </tr>
+
+            </tbody>
+          </table>
         </div>
 
-        <!-- Replace src with your Google Calendar embed link -->
-        <iframe
-          class="embed"
-          title="BECC-Tokyo Calendar"
-          src="PASTE_YOUR_GOOGLE_CALENDAR_EMBED_URL_HERE"
-          style="height: 720px;"
-          loading="lazy">
-        </iframe>
-
-        <p style="margin-top:14px; color: var(--muted); font-size: 13px;">
-          Tip: Set your calendar to public (details below) so non-members can view it.
+        <p class="lead" style="margin-top:14px;">
+          Dates and details will be updated here as fixtures are finalised.
         </p>
       </div>
-    </div>
-  </main>
 
+    </div>
+  </section>
+
+  <!-- FOOTER -->
   <footer>
     <div class="wrap foot">
-      <small>© <span id="year"></span> <span data-i18n="footer_note">Built on GitHub Pages • BECC-Tokyo</span></small>
+      <div>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div class="logo" aria-hidden="true" style="width:28px; height:28px; border-radius:9px;"></div>
+          <div style="font-weight:800;">BECC-Tokyo</div>
+        </div>
+        <small>© <span id="year"></span> Built on GitHub Pages • BECC-Tokyo</small>
+      </div>
     </div>
   </footer>
 
   <script src="./assets/site.js"></script>
 </body>
 </html>
-
