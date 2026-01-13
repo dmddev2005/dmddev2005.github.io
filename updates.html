@@ -4,11 +4,99 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>BECC-Tokyo | Updates</title>
-  <meta name="description" content="Latest announcements, match updates, and club events." />
+  <meta name="description" content="Latest announcements, meeting notes, and club updates." />
   <link rel="stylesheet" href="./assets/styles.css" />
+
+  <style>
+    /* Page-specific polish */
+    .updates-list{ display: grid; gap: 14px; }
+
+    .accordion{
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+
+    .acc-head{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 18px 18px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .acc-title{
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .acc-title h3{
+      margin: 0;
+      font-size: 18px;
+    }
+
+    .acc-meta{
+      color: var(--faint);
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .acc-icon{
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      font-size: 20px;
+      background: #fff;
+      color: var(--navy-deep);
+      border: 2px solid var(--red);
+      flex: 0 0 auto;
+      transition: transform .18s ease, background .18s ease, color .18s ease;
+    }
+
+    .accordion.open .acc-icon{
+      background: var(--red);
+      color: #fff;
+      transform: rotate(180deg);
+    }
+
+    .acc-body{
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .28s ease;
+      border-top: 1px solid rgba(255,255,255,.20);
+    }
+
+    .acc-inner{
+      padding: 18px;
+    }
+
+    .notes{
+      white-space: pre-wrap;
+      line-height: 1.7;
+      color: var(--muted);
+      font-weight: 650;
+    }
+
+    /* Tighter on mobile */
+    @media (max-width: 900px){
+      .acc-head{ padding: 16px; }
+      .acc-icon{ width: 38px; height: 38px; font-size: 18px; }
+      .acc-inner{ padding: 16px; }
+      .notes{ font-weight: 600; }
+    }
+  </style>
 </head>
 
 <body>
+  <!-- NAV -->
   <div class="nav">
     <div class="row">
       <div class="brand">
@@ -30,64 +118,102 @@
     </div>
   </div>
 
+  <!-- HEADER -->
   <header class="section">
     <div class="wrap">
-      <h1>Latest Updates</h1>
-      <p class="lead">Announcements, match information, and club notices.</p>
+      <h1>Updates</h1>
+      <p class="lead">Announcements, meeting notes, and club news.</p>
     </div>
   </header>
 
+  <!-- UPDATES LIST -->
   <section class="section">
     <div class="wrap">
-      <div class="grid two">
+      <div class="updates-list">
 
-        <div class="card">
-          <h2 style="margin-bottom:12px;">Announcements</h2>
-
-          <!-- Edit these items anytime -->
-          <div style="display:grid; gap:12px;">
-            <div class="card" style="border-left:6px solid var(--red-soft);">
-              <h3>Season kickoff training</h3>
-              <p><strong>Date:</strong> 2026-01-xx</p>
-              <p>Bring spikes, water, and a light jacket. New players welcome.</p>
+        <!-- AGM 2026 -->
+        <div class="accordion" data-acc>
+          <div class="acc-head" data-acc-head role="button" aria-expanded="false" tabindex="0">
+            <div class="acc-title">
+              <h3>AGM 2026 Meeting Notes</h3>
+              <div class="acc-meta">From Richard J Sciver • Sent Jan 12, 2026 • Minutes from AGM & awards dinner</div>
             </div>
+            <div class="acc-icon" aria-hidden="true">+</div>
+          </div>
 
-            <div class="card" style="border-left:6px solid var(--red-soft);">
-              <h3>Match day reminder</h3>
-              <p><strong>Date:</strong> 2026-01-xx</p>
-              <p>Please arrive 45 minutes early for warm-up and ground setup.</p>
+          <div class="acc-body" data-acc-body>
+            <div class="acc-inner">
+              <div class="notes">Dear All
+
+Many thanks to all who came to the AGM and awards dinner. It was a great occasion and also thank you very much to all for your kind messages to me during the evening. 
+
+Congratulations also to Jim B who was elected as President of the club during the meeting. I look forward to helping Jim and the club in the coming months ahead of my departure from Japan in August. 
+
+Minutes:
+1. Season 2025
+We played 11 games during the season, only losing 1 to rain, and had a particularly good run in the Japan Cup. 29 cricketers played at least one game, and we held 7 Saturday morning nets as well as the Tuesday evening cricket at BST Azabudai. 
+
+Congratulations to Anton W (batting), Kenji M (bowling), Sud D (fielding) and Kenji M (Ben aWard) for taking season awards this year. 
+
+2 Finances
+Our thanks to Kenji for keeping our finances under good control and thank you to all players and members for contributing their fees to the club. We are in good order. And have a small surplus as we head into 2026. 
+
+3 Committee Members 2026
+After some discussion, we have a new line up for the committee. Many thanks to all for their contributions and our 2026 committee will be :
+
+President: Jim Booth
+Treasurer: Kenji Murata 
+Match Day Duties: Dan Mendelssohn 
+Manager: Rob Newman
+Training (BST): James Hardy 
+Communications: Shakil Mostaq
+Captain (Friendlies): Jim Booth
+Captain (Japan Cup): Peter Gyves
+Vice Captain (Japan Cup): Anthon Winston
+
+We decided that we would have two captains, Jim for the friendlies and Peter for the Japan Cup, supported by vice captain (Japan Cup) and also we hope by past captains if/when needed. 
+
+Shakil has volunteered to bring us into the online age and will lead us in the communications area. More of this as we develop the ideas. The first step will be to discuss and agree the scope with the committee. Action: Shakil M
+
+Congratulations and many thanks to all. Action: Richard will share the roles and responsibilities of committee members for all to view. 
+
+4 Season 2026 Fixtures & Priorities 
+We have the fixtures with YCAC and the friendship cup already pencilled in. We will share dates soonest. A new fixture in March was discussed and we agreed to change the 30 August date and move to 2 November to avoid the summer heat. 
+Action Richard and Anthony H to finalise dates with YCAC. 
+Kenji will discuss a fixture with Chuo. 
+
+At the moment the first game is due on 12 April at YCAC. Action all: Put this in your diaries 
+
+Cricket teams from Singapore and Hong Kong will visit YCAC this year. Action: Anthony H to share details if players are needed.  
+
+5 WalkJapan Sponsor Refresh
+We thank Paul Christie, WalkJapan for his continuing support for the club and we had a good discussion on options for sponsorship in 2026. WalkJapan have decided on a new company logo and we discussed the option of new shirts. However we decided that because we have bought new shirts only recently (2022 and 2024). Paul asked that we would come up with different sponsorship ideas to see what might work best and also give promotion benefit for WalkJapan. Action Jim B and the committee.
+
+6 Fees
+The meeting decided to keep the fee structure the same for season 2026 which should be good news for all. 
+
+7 Batting Helmet Specification rules from JCA
+There has been some discussion about Helmets in the light of recent safety improvements. Action Rob N to find out if the JCA are changing the rules wrt helmets. 
+
+8 Final Words as President …
+It is with a bit of sadness of course that we will say goodbye to several players this winter… Jack S and Sam D have already left Japan and Ant M and Yusuke Y will move on soon. We thank you for everything, wish you well and hope to see you in BECC colours again in the future.
+
+It has been an honour to be President of the club and quite a journey over the last 4 years. Thank you to all for your camaraderie, energy, ideas and for your cricket. It has been a blast. 
+
+Good luck to Jim B on taking over as Prez and hope you enjoy it as I have done. 
+
+I will be around for the first half of the season, and hope to have time to play some games. Until we meet then, best wishes and as always happy cricket 
+
+Richard</div>
             </div>
           </div>
         </div>
 
-        <div class="card">
-          <h2 style="margin-bottom:12px;">Events</h2>
-
-          <div style="display:grid; gap:12px;">
-            <div class="card" style="border-left:6px solid var(--red);">
-              <h3>Club Social / BBQ</h3>
-              <p><strong>Date:</strong> 2026-01-xx</p>
-              <p>Friends and family welcome. Location and timing to be confirmed.</p>
-            </div>
-
-            <div class="card" style="border-left:6px solid var(--red);">
-              <h3>Tournament weekend</h3>
-              <p><strong>Date:</strong> 2026-02-xx</p>
-              <p>Details will be posted here once fixtures are confirmed.</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <div style="margin-top:18px;" class="card">
-        <h2>Contact</h2>
-        <p class="lead">For updates or questions, reach us here:</p>
-        <p><a href="mailto:info@becc-tokyo.org">info@becc-tokyo.org</a></p>
       </div>
     </div>
   </section>
 
+  <!-- FOOTER -->
   <footer>
     <div class="wrap foot">
       <div>
@@ -101,5 +227,39 @@
   </footer>
 
   <script src="./assets/site.js"></script>
+  <script>
+    (function(){
+      const accs = document.querySelectorAll('[data-acc]');
+      accs.forEach(acc => {
+        const head = acc.querySelector('[data-acc-head]');
+        const body = acc.querySelector('[data-acc-body]');
+        const icon = acc.querySelector('.acc-icon');
+
+        const close = () => {
+          acc.classList.remove('open');
+          head.setAttribute('aria-expanded','false');
+          icon.textContent = '+';
+          body.style.maxHeight = '0px';
+        };
+
+        const open = () => {
+          acc.classList.add('open');
+          head.setAttribute('aria-expanded','true');
+          icon.textContent = '–';
+          body.style.maxHeight = body.scrollHeight + 'px';
+        };
+
+        const toggle = () => acc.classList.contains('open') ? close() : open();
+
+        head.addEventListener('click', toggle);
+        head.addEventListener('keydown', (e) => {
+          if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+        });
+
+        // start closed
+        close();
+      });
+    })();
+  </script>
 </body>
 </html>
