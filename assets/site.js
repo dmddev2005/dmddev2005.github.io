@@ -13,7 +13,7 @@ const I18N = {
     home_title: "BECC-Tokyo Cricket Club",
     home_sub: "Welcome to the BECC–Tokyo. We play in the Japan Cup League (South Kanto) and friendly matches throughout the year, with the goal of promoting cricket in Japan and enjoying the game as a social event.",
         home_cta_signup: "Player Signup",
-    home_cta_schedule: "View Schedule",
+    home_cta_schedule: "Fixture and Results",
     home_cta_rules: "Read Rules",
 
     rules_title: "Rules & Club Guidelines",
