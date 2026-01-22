@@ -122,12 +122,13 @@ a:hover{ text-decoration:underline; }
   font-weight:900;
 }
 
-.logo{
+.logo-img{
   width:34px;
   height:34px;
-  border-radius:10px;
-  background:linear-gradient(135deg,var(--red),var(--red-soft));
-  box-shadow: 0 10px 22px rgba(200,32,47,.25);
+  border-radius:10px;     /* keeps same rounded look */
+  object-fit: cover;      /* prevents stretching */
+  display:block;
+  box-shadow: 0 10px 22px rgba(0,0,0,.25);
 }
 
 .links{
