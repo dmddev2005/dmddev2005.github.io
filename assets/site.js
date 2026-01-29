@@ -7,7 +7,7 @@ const I18N = {
     nav_gallery: "Gallery",
     nav_events: "Events",
     nav_archives: "Archives",
-    nav_rules: "Rules",
+    nav_rules: "Grounds", //"changed from Rules"
     nav_contact: "Contact",
     /* nav_signup: "Join / Signup", */
     home_title: "BECC-Tokyo Cricket Club",
