@@ -7,8 +7,8 @@ const I18N = {
     nav_gallery: "Gallery",
  //   nav_events: "Events",
   //  nav_archives: "Archives",
-    nav_rules: "Grounds", //"changed from Rules"
-    nav_contact: "Contact",
+ //   nav_rules: "Grounds", //"changed from Rules"
+ //   nav_contact: "Contact",
     /* nav_signup: "Join / Signup", */
     home_title: "BECC-Tokyo Cricket Club",
     home_sub: "Welcome to the BECC–Tokyo. We play in the Japan Cup League (South Kanto) and friendly matches throughout the year, with the goal of promoting cricket in Japan and enjoying the game as a social event.",
@@ -27,7 +27,7 @@ const I18N = {
     footer_note: "Built on GitHub Pages • BECC-Tokyo"
   },
   ja: {
-    nav_updates: "最新情報",
+    nav_updates: "クラブについて",
     nav_schedule: "スケジュール",
     nav_nets: "ネット練習",
     nav_fields: "グラウンド",
