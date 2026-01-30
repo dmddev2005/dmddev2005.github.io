@@ -34,7 +34,7 @@ const I18N = {
     nav_gallery: "ギャラリー",
     nav_events: "イベント",
     nav_archives: "アーカイブ",
-    nav_rules: "ルール",
+    nav_rules: "フィールド",
     nav_contact: "連絡先",
     nav_signup: "参加・登録",
 
