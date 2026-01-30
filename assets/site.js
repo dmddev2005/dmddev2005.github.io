@@ -1,12 +1,12 @@
 const I18N = {
   en: {
    /* nav_updates: "Updates", */
-    nav_schedule: "Fixture",
-    nav_nets: "Net Practice",
-    nav_fields: "Fields",
+   // nav_schedule: "Fixture",
+  //  nav_nets: "Net Practice",
+  //  nav_fields: "Fields",
     nav_gallery: "Gallery",
-    nav_events: "Events",
-    nav_archives: "Archives",
+ //   nav_events: "Events",
+  //  nav_archives: "Archives",
     nav_rules: "Grounds", //"changed from Rules"
     nav_contact: "Contact",
     /* nav_signup: "Join / Signup", */
