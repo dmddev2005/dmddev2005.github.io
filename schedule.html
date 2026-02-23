@@ -6,6 +6,41 @@
   <title>BECC-Tokyo | Schedule</title>
   <meta name="description" content="BECC-Tokyo fixtures and schedule." />
   <link rel="stylesheet" href="./assets/styles.css" />
+
+  <style>
+    /* Subtle row highlighting */
+    .sched-row--friendly { background: rgba(46, 204, 113, 0.08); }
+    .sched-row--cup { background: rgba(52, 152, 219, 0.08); }
+    .sched-row--plain { background: transparent; }
+
+    /* Hover polish */
+    .sched-row--friendly:hover,
+    .sched-row--cup:hover,
+    .sched-row--plain:hover {
+      background: rgba(255,255,255,0.06);
+    }
+
+    /* Banner */
+    .next-match {
+      margin-top: 14px;
+      padding: 12px 14px;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 14px;
+      background: rgba(255,255,255,.06);
+    }
+    .next-match .label {
+      font-weight: 800;
+      letter-spacing: .2px;
+    }
+    .next-match .meta {
+      opacity: .92;
+      margin-top: 6px;
+      line-height: 1.35;
+    }
+
+    /* Slightly tighter table (keeps your current padding but makes it consistent) */
+    .sched-table th, .sched-table td { padding: 8px 10px; }
+  </style>
 </head>
 
 <body>
@@ -48,6 +83,12 @@
       <p style="margin-top:10px; opacity:.9;">
         Players: please submit/update availability on the <a href="./availability.html">Availability</a> page.
       </p>
+
+      <!-- Upcoming next match banner (auto-filled from the table below) -->
+      <div class="next-match" id="nextMatchBanner" aria-live="polite">
+        <div class="label">Upcoming next match</div>
+        <div class="meta">Loading…</div>
+      </div>
     </div>
   </header>
 
@@ -57,154 +98,154 @@
       <h2 style="margin-top:0;">Fixtures</h2>
 
       <div style="overflow:auto; border:1px solid rgba(255,255,255,.12); border-radius:14px;">
-        <table style="width:100%; border-collapse:collapse; min-width:680px;">
+        <table class="sched-table" style="width:100%; border-collapse:collapse; min-width:680px;">
           <thead>
             <tr>
-              <th style="text-align:left; padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.12);">Date</th>
-              <th style="text-align:left; padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.12);">Event</th>
-              <th style="text-align:left; padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.12);">Opponent</th>
-              <th style="text-align:left; padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.12);">Meeting time</th>
-              <th style="text-align:left; padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.12);">Ground</th>
+              <th style="text-align:left; border-bottom:1px solid rgba(255,255,255,.12);">Date</th>
+              <th style="text-align:left; border-bottom:1px solid rgba(255,255,255,.12);">Event</th>
+              <th style="text-align:left; border-bottom:1px solid rgba(255,255,255,.12);">Opponent</th>
+              <th style="text-align:left; border-bottom:1px solid rgba(255,255,255,.12);">Meeting time</th>
+              <th style="text-align:left; border-bottom:1px solid rgba(255,255,255,.12);">Ground</th>
             </tr>
           </thead>
 
           <tbody>
             <!-- From "SEASON 2026: FIXTURES, PRIORITIES" (ignoring Month + Umpiring section) -->
 
-            <tr>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">April 12th</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">Friendly</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">YCAC</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">11:30 AM</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">YCAC</td>
+            <tr class="sched-row--friendly">
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">April 12th</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">Friendly</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">YCAC</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">11:30 AM</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">YCAC</td>
             </tr>
 
-            <tr>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">TBD</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">Jpn Cup SK</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">TBD</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">TBD</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">YCAC</td>
+            <tr class="sched-row--cup">
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">TBD</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">Jpn Cup SK</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">TBD</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">TBD</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">YCAC</td>
             </tr>
 
-            <tr>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">May 17th</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">Friendly</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">YCAC</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">11:30 AM</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">YCAC</td>
+            <tr class="sched-row--friendly">
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">May 17th</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">Friendly</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">YCAC</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">11:30 AM</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">YCAC</td>
             </tr>
 
-            <tr>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">TBD</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">Jpn Cup SK</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">TBD</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">TBD</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">YCAC</td>
+            <tr class="sched-row--cup">
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">TBD</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">Jpn Cup SK</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">TBD</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">TBD</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">YCAC</td>
             </tr>
 
-            <tr>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">TBD</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">Jpn Cup SK</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">TBD</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">TBD</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">YCAC</td>
+            <tr class="sched-row--cup">
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">TBD</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">Jpn Cup SK</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">TBD</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">TBD</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">YCAC</td>
             </tr>
 
-            <tr>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">June 14th</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">Friendly</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">YCAC</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">11:30 AM</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">YCAC</td>
+            <tr class="sched-row--friendly">
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">June 14th</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">Friendly</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">YCAC</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">11:30 AM</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">YCAC</td>
             </tr>
 
-            <tr>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">TBD</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">Jpn Cup SK</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">TBD</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">TBD</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">YCAC</td>
+            <tr class="sched-row--cup">
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">TBD</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">Jpn Cup SK</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">TBD</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">TBD</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">YCAC</td>
             </tr>
 
-            <tr>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">July 12th</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">Friendly</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">YCAC</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">11:30 AM</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">YCAC</td>
+            <tr class="sched-row--friendly">
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">July 12th</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">Friendly</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">YCAC</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">11:30 AM</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">YCAC</td>
             </tr>
 
-            <tr>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">August 23rd</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">Jpn Cup SK PO 4v5</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">TBD</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">TBD</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">YCAC</td>
+            <tr class="sched-row--cup">
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">August 23rd</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">Jpn Cup SK PO 4v5</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">TBD</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">TBD</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">YCAC</td>
             </tr>
 
-            <tr>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">August 30th</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">Friendly</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">YCAC</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">11:30 AM</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">YCAC</td>
+            <tr class="sched-row--friendly">
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">August 30th</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">Friendly</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">YCAC</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">11:30 AM</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">YCAC</td>
             </tr>
 
-            <tr>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">September 6th or 13th</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">Jpn Cup SK Elim 2v3</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">TBD</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">TBD</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">YCAC</td>
+            <tr class="sched-row--cup">
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">September 6th or 13th</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">Jpn Cup SK Elim 2v3</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">TBD</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">TBD</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">YCAC</td>
             </tr>
 
-            <tr>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">September 20th</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">Jpn Cup SK PO Final</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">TBD</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">TBD</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">YCAC</td>
+            <tr class="sched-row--cup">
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">September 20th</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">Jpn Cup SK PO Final</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">TBD</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">TBD</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">YCAC</td>
             </tr>
 
-            <tr>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">September 27th</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">Friendship Cup (Friendly)</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">YCAC &amp; Ind Emb</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">11:30 AM</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">YCAC</td>
+            <tr class="sched-row--cup">
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">September 27th</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">Friendship Cup (Friendly)</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">YCAC &amp; Ind Emb</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">11:30 AM</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">YCAC</td>
             </tr>
 
-            <tr>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">October 4th</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">Jpn Cup Kanto PO</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">TBD</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">TBD</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">Sano RG</td>
+            <tr class="sched-row--cup">
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">October 4th</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">Jpn Cup Kanto PO</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">TBD</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">TBD</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">Sano RG</td>
             </tr>
 
-            <tr>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">October 24th</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">Emb Cup</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">TBD</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">TBD</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">SICG</td>
+            <tr class="sched-row--cup">
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">October 24th</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">Emb Cup</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">TBD</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">TBD</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">SICG</td>
             </tr>
 
-            <tr>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">October 25th</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">Emb Cup</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">TBD</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">TBD</td>
-              <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);">SICG</td>
+            <tr class="sched-row--cup">
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">October 25th</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">Emb Cup</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">TBD</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">TBD</td>
+              <td style="border-bottom:1px solid rgba(255,255,255,.08);">SICG</td>
             </tr>
 
-            <tr>
-              <td style="padding:8px 10px;">TBD</td>
-              <td style="padding:8px 10px;">Friendly</td>
-              <td style="padding:8px 10px;">Chuo Uni</td>
-              <td style="padding:8px 10px;">TBD</td>
-              <td style="padding:8px 10px;">Sano RG</td>
+            <tr class="sched-row--friendly">
+              <td>TBD</td>
+              <td>Friendly</td>
+              <td>Chuo Uni</td>
+              <td>TBD</td>
+              <td>Sano RG</td>
             </tr>
 
           </tbody>
@@ -231,5 +272,45 @@
   </footer>
 
   <script src="./assets/site.js"></script>
+
+  <!-- Banner auto-fill -->
+  <script>
+    (function () {
+      const banner = document.getElementById("nextMatchBanner");
+      if (!banner) return;
+
+      const meta = banner.querySelector(".meta");
+      const tbody = document.querySelector("table.sched-table tbody");
+      if (!tbody) {
+        meta.textContent = "Schedule table not found.";
+        return;
+      }
+
+      // Pick the first row where Date is not "TBD"
+      const rows = Array.from(tbody.querySelectorAll("tr"));
+      const next = rows.find(tr => {
+        const tds = tr.querySelectorAll("td");
+        if (tds.length < 5) return false;
+        const date = (tds[0].textContent || "").trim().toLowerCase();
+        return date && date !== "tbd";
+      });
+
+      if (!next) {
+        meta.textContent = "No confirmed fixtures yet — please check back soon.";
+        return;
+      }
+
+      const tds = next.querySelectorAll("td");
+      const date = tds[0].textContent.trim();
+      const event = tds[1].textContent.trim();
+      const opp = tds[2].textContent.trim();
+      const meet = tds[3].textContent.trim();
+      const ground = tds[4].textContent.trim();
+
+      meta.innerHTML =
+        `<strong>${date}</strong> — ${event} vs ${opp}<br>` +
+        `<strong>Meet:</strong> ${meet} &nbsp; • &nbsp; <strong>Ground:</strong> ${ground}`;
+    })();
+  </script>
 </body>
 </html>
