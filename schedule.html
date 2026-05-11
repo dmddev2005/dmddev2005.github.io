@@ -8,19 +8,16 @@
   <link rel="stylesheet" href="./assets/styles.css" />
 
   <style>
-    /* Subtle row highlighting */
     .sched-row--friendly { background: rgba(46, 204, 113, 0.08); }
     .sched-row--cup { background: rgba(52, 152, 219, 0.08); }
     .sched-row--plain { background: transparent; }
 
-    /* Hover polish */
     .sched-row--friendly:hover,
     .sched-row--cup:hover,
     .sched-row--plain:hover {
       background: rgba(255,255,255,0.06);
     }
 
-    /* Banner */
     .next-match {
       margin-top: 14px;
       padding: 12px 14px;
@@ -40,7 +37,6 @@
       line-height: 1.35;
     }
 
-    /* Slightly tighter table */
     .sched-table th,
     .sched-table td {
       padding: 8px 10px;
@@ -98,8 +94,7 @@
         <a href="./availability.html">Availability</a> page.
       </p>
 
-      <!-- NEXT MATCH BANNER -->
-      <div class="next-match" id="nextMatchBanner" aria-live="polite">
+      <div class="next-match" id="nextMatchBanner">
         <div class="label">Upcoming next match</div>
         <div class="meta">Loading…</div>
       </div>
@@ -107,7 +102,7 @@
     </div>
   </header>
 
-  <!-- SCHEDULE TABLE -->
+  <!-- SCHEDULE -->
   <section class="section">
     <div class="wrap">
 
@@ -115,10 +110,7 @@
 
       <div style="overflow:auto; border:1px solid rgba(255,255,255,.12); border-radius:14px;">
 
-        <table
-          class="sched-table"
-          style="width:100%; border-collapse:collapse; min-width:680px;"
-        >
+        <table class="sched-table" style="width:100%; border-collapse:collapse; min-width:680px;">
 
           <thead>
             <tr>
@@ -134,62 +126,162 @@
           <tbody>
 
             <tr class="sched-row--friendly">
-              <td style="border-bottom:1px solid rgba(255,255,255,.08);">April 12th</td>
-              <td style="border-bottom:1px solid rgba(255,255,255,.08);">Friendly</td>
-              <td style="border-bottom:1px solid rgba(255,255,255,.08);">YCAC</td>
-              <td style="border-bottom:1px solid rgba(255,255,255,.08);">11:30 AM</td>
-              <td style="border-bottom:1px solid rgba(255,255,255,.08);">YCAC</td>
-              <td style="border-bottom:1px solid rgba(255,255,255,.08);">BECC lost by 21 runs</td>
+              <td>April 12th</td>
+              <td>Friendly</td>
+              <td>YCAC</td>
+              <td>11:30 AM</td>
+              <td>YCAC</td>
+              <td>BECC lost by 21 runs</td>
             </tr>
 
             <tr class="sched-row--cup">
-              <td style="border-bottom:1px solid rgba(255,255,255,.08);">April 26th</td>
-              <td style="border-bottom:1px solid rgba(255,255,255,.08);">Jpn Cup SK</td>
-              <td style="border-bottom:1px solid rgba(255,255,255,.08);">KEIO UNIV</td>
-              <td style="border-bottom:1px solid rgba(255,255,255,.08);">12:30 PM</td>
-              <td style="border-bottom:1px solid rgba(255,255,255,.08);">YCAC</td>
-              <td style="border-bottom:1px solid rgba(255,255,255,.08);">BECC Won by 6 wickets</td>
+              <td>April 26th</td>
+              <td>Jpn Cup SK</td>
+              <td>KEIO UNIV</td>
+              <td>12:30 PM</td>
+              <td>YCAC</td>
+              <td>BECC Won by 6 wickets</td>
             </tr>
 
             <tr class="sched-row--cup">
-              <td style="border-bottom:1px solid rgba(255,255,255,.08);">May 10th</td>
-              <td style="border-bottom:1px solid rgba(255,255,255,.08);">Jpn Cup SK</td>
-              <td style="border-bottom:1px solid rgba(255,255,255,.08);">WOMBATS</td>
-              <td style="border-bottom:1px solid rgba(255,255,255,.08);">12:30 PM</td>
-              <td style="border-bottom:1px solid rgba(255,255,255,.08);">YCAC</td>
-              <td style="border-bottom:1px solid rgba(255,255,255,.08);">BECC lost by 4 wickets</td>
+              <td>May 10th</td>
+              <td>Jpn Cup SK</td>
+              <td>WOMBATS</td>
+              <td>12:30 PM</td>
+              <td>YCAC</td>
+              <td>BECC lost by 4 wickets</td>
             </tr>
 
             <tr class="sched-row--friendly">
-              <td style="border-bottom:1px solid rgba(255,255,255,.08);">May 17th</td>
-              <td style="border-bottom:1px solid rgba(255,255,255,.08);">Friendly</td>
-              <td style="border-bottom:1px solid rgba(255,255,255,.08);">YCAC</td>
-              <td style="border-bottom:1px solid rgba(255,255,255,.08);">11:30 AM</td>
-              <td style="border-bottom:1px solid rgba(255,255,255,.08);">YCAC</td>
-              <td style="border-bottom:1px solid rgba(255,255,255,.08);"></td>
+              <td>May 17th</td>
+              <td>Friendly</td>
+              <td>YCAC</td>
+              <td>11:30 AM</td>
+              <td>YCAC</td>
+              <td></td>
             </tr>
 
             <tr class="sched-row--friendly">
-              <td style="border-bottom:1px solid rgba(255,255,255,.08);">June 14th</td>
-              <td style="border-bottom:1px solid rgba(255,255,255,.08);">Friendly</td>
-              <td style="border-bottom:1px solid rgba(255,255,255,.08);">YCAC</td>
-              <td style="border-bottom:1px solid rgba(255,255,255,.08);">11:30 AM</td>
-              <td style="border-bottom:1px solid rgba(255,255,255,.08);">YCAC</td>
-              <td style="border-bottom:1px solid rgba(255,255,255,.08);"></td>
+              <td>June 14th</td>
+              <td>Friendly</td>
+              <td>YCAC</td>
+              <td>11:30 AM</td>
+              <td>YCAC</td>
+              <td></td>
             </tr>
 
             <tr class="sched-row--cup">
-              <td style="border-bottom:1px solid rgba(255,255,255,.08);">June 28th</td>
-              <td style="border-bottom:1px solid rgba(255,255,255,.08);">Jpn Cup SK</td>
-              <td style="border-bottom:1px solid rgba(255,255,255,.08);">AOYAMA UNIV</td>
-              <td style="border-bottom:1px solid rgba(255,255,255,.08);">9:00 AM</td>
-              <td style="border-bottom:1px solid rgba(255,255,255,.08);">YCAC</td>
-              <td style="border-bottom:1px solid rgba(255,255,255,.08);"></td>
+              <td>June 28th</td>
+              <td>Jpn Cup SK</td>
+              <td>AOYAMA UNIV</td>
+              <td>9:00 AM</td>
+              <td>YCAC</td>
+              <td></td>
+            </tr>
+
+            <tr class="sched-row--friendly">
+              <td>July 12th</td>
+              <td>Friendly</td>
+              <td>YCAC</td>
+              <td>11:30 AM</td>
+              <td>YCAC</td>
+              <td></td>
+            </tr>
+
+            <tr class="sched-row--cup">
+              <td>July 26th</td>
+              <td>Jpn Cup SK</td>
+              <td>RAKUTEN</td>
+              <td>12:30 PM</td>
+              <td>YCAC</td>
+              <td></td>
+            </tr>
+
+            <tr class="sched-row--cup">
+              <td>August 30th</td>
+              <td>Japan Cup SK</td>
+              <td>Play Off 4v5C</td>
+              <td>12:30 PM</td>
+              <td>YCAC</td>
+              <td></td>
+            </tr>
+
+            <tr class="sched-row--cup">
+              <td>September 6th</td>
+              <td>Jpn Cup SK</td>
+              <td>ELIM 2v3</td>
+              <td>12:30 PM</td>
+              <td>YCAC</td>
+              <td></td>
+            </tr>
+
+            <tr class="sched-row--cup">
+              <td>September 20th</td>
+              <td>Jpn Cup SK PO</td>
+              <td>1 v ELIM WINNER</td>
+              <td>12:30 PM</td>
+              <td>YCAC</td>
+              <td></td>
+            </tr>
+
+            <tr class="sched-row--cup">
+              <td>September 27th</td>
+              <td>Friendship Cup(Friendly)</td>
+              <td>YCAC &amp; Ind Emb</td>
+              <td>TBD AM</td>
+              <td>YCAC</td>
+              <td></td>
+            </tr>
+
+            <tr class="sched-row--cup">
+              <td>October 4th</td>
+              <td>Jpn Cup Kanto PO</td>
+              <td>FINAL</td>
+              <td>TBD</td>
+              <td>Sano RG</td>
+              <td></td>
+            </tr>
+
+            <tr class="sched-row--cup">
+              <td>October 24th</td>
+              <td>Emb Cup</td>
+              <td>TBD</td>
+              <td>TBD</td>
+              <td>SICG</td>
+              <td></td>
+            </tr>
+
+            <tr class="sched-row--cup">
+              <td>October 25th</td>
+              <td>Emb Cup</td>
+              <td>TBD</td>
+              <td>TBD</td>
+              <td>SICG</td>
+              <td></td>
+            </tr>
+
+            <tr class="sched-row--friendly">
+              <td>November 1st</td>
+              <td>Friendly</td>
+              <td>YCAC</td>
+              <td>11:30 AM</td>
+              <td>YCAC</td>
+              <td></td>
+            </tr>
+
+            <tr class="sched-row--friendly">
+              <td>TBD</td>
+              <td>Friendly</td>
+              <td>Chuo Uni</td>
+              <td>TBD</td>
+              <td>Sano RG</td>
+              <td></td>
             </tr>
 
           </tbody>
 
         </table>
+
       </div>
 
       <p style="margin-top:14px; opacity:.85; font-size:14px;">
@@ -210,8 +302,7 @@
         </div>
 
         <small>
-          © <span id="year"></span>
-          Built on GitHub Pages • BECC-Tokyo
+          © <span id="year"></span> Built on GitHub Pages • BECC-Tokyo
         </small>
       </div>
 
@@ -220,7 +311,7 @@
 
   <script src="./assets/site.js"></script>
 
-  <!-- AUTO NEXT MATCH -->
+  <!-- NEXT MATCH SCRIPT -->
   <script>
     (function () {
 
@@ -229,11 +320,6 @@
 
       const meta = banner.querySelector(".meta");
       const tbody = document.querySelector("table.sched-table tbody");
-
-      if (!tbody) {
-        meta.textContent = "Schedule table not found.";
-        return;
-      }
 
       const year = 2026;
 
@@ -286,14 +372,13 @@
       const next = upcomingRows[0];
 
       if (!next) {
-        meta.textContent =
-          "No upcoming confirmed fixtures yet — please check back soon.";
+        meta.textContent = "No upcoming confirmed fixtures yet.";
         return;
       }
 
       meta.innerHTML =
         `<strong>${next.date}</strong> — ${next.event} vs ${next.opp}<br>` +
-        `<strong>Meet:</strong> ${next.meet} &nbsp; • &nbsp; <strong>Ground:</strong> ${next.ground}`;
+        `<strong>Meet:</strong> ${next.meet} • <strong>Ground:</strong> ${next.ground}`;
 
     })();
   </script>
