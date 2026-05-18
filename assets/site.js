@@ -24,7 +24,7 @@ const I18N = {
     signup_sub: "New players welcome. Fill the form and we’ll contact you with next steps.",
 
     common_last_updated: "Last updated",
-    footer_note: "Built on GitHub Pages • BECC-Tokyo"
+    footer_note: "BECC-Tokyo"
   },
   ja: {
     nav_updates: "クラブについて",
